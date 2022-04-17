@@ -1,6 +1,7 @@
 # Xenonstack_module3
-Internctl server for Xenonstack
-For Exucuting this
+
+
+direction for use
 download this file and move inside the /usr/bin directory
-and make this file as an excutable file using chmod +x internctl
+and make this file as an excutable file by using ##(chmod +x internctl) command
 so that it can be global accessibile 
