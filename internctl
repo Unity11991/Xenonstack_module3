@@ -1,0 +1,135 @@
+#!/usr/bin/bash
+
+
+internctl_cpuinfo(){
+	#get cpu info
+	lscpu
+	exit
+}
+
+cli_version(){
+	# --version: Show version
+	echo "v0.1.0"
+	exit
+}
+
+cli_help(){
+	# --hel: Show help
+	echo "internctl help listed here"
+	exit
+}
+
+cli_memory(){
+	free
+	exit
+}
+
+useradd(){
+	useradd $3
+	exit
+}
+
+#argument
+case $1 in
+	"--help" | "-h")
+		cli_help
+		;;
+	"--version" | "-v")
+		cli_version
+		;;
+	"cpu")
+		case $2 in
+			"getinfo")
+				internctl_cpuinfo
+				;;
+		esac
+esac
+
+case $1 in
+	"memory") echo "pass the argument getinfo"
+	case $2 in
+		"getinfo")
+			cli_memory
+			;;
+	esac
+esac
+
+
+if [ $1 == "create" ]; then
+	cli_help
+fi
+
+
+case $1 in
+	"user") 
+		case $2 in
+			"create")
+				echo $2
+				case $3 in
+					[A-Z][a-z]*) adduser -m $3
+						;;
+				esac
+		esac
+esac
+
+case $1 in
+        "user")
+                case $2 in
+                        "list")
+                                if [[ $3 = '--sudo-only' ]] 
+                                then
+                                        getent group sudo
+                                else
+                                        compgen -u
+                                fi
+                                ;;
+                esac
+esac
+
+
+case $1 in
+	"file")
+		case $2 in
+			"getinfo")
+				if [[ $3 = '--size' ]]
+				then
+					stat --format="%s" $4
+				elif [[ $3 = '-s' ]]
+				then
+					stat --format="%s" $4
+				elif [[ $3 = '--permission' ]]
+				then
+					stat --format="%A" $4
+				elif [[ $3 = '-p' ]]
+				then
+					stat --format="%A" $4
+				elif [[ $3 = "--owner" ]]
+				then
+					stat --format="%G" $4
+				elif [[ $3 = "o" ]]
+				then
+					stat --format="%G" $4
+				elif [[ $3 = "--last-modified" ]]
+				then
+					stat --format="%y" $4
+				elif [[ $3 = "m" ]]
+				then
+					stat --format="%y" $4
+				else
+					if [[ $3 ]]
+					then
+					echo "File:    "	$(stat --format="%n" $3)
+					echo "Access:  "	$(stat --format="%A" $3)
+ 					echo "Size:    "	$(stat --format="%s" $3)
+					echo "Size(B): "	$(stat --format="%G" $3)
+					echo "Modify:  "	$(stat --format="%y" $3)
+					else
+						echo "--size, -s to print size"
+						echo "--permission, -p print file permissions"
+						echo "--owner, o print file owner"
+						echo "--last-modified, m"
+					fi
+				fi
+				;;
+		esac
+esac
