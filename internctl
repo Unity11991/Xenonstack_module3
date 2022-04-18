@@ -15,7 +15,16 @@ cli_version(){
 
 cli_help(){
 	# --hel: Show help
-	echo "internctl help listed here"
+	echo "internctl [OPTIONS] ... [FILES] ...."
+	echo "internctl help argumnets."
+	echo "pass argumnet --version"
+	echo "pass argument --help"
+	echo "pass argument arg1 | arg2 == <cpu getinfo> to get cpu information"
+	echo "pass argument arg1 | arg2 == <memory getinfo> to get memory information"
+	echo "pass argument arg1 | arg2 ==  < user create username >"
+	echo "pass argument arg1 | arg2 == <user list> to get all user presnets on the server"
+	echo "pass argument arg1 | arge2 | arge3 == < user list --sudo-only > to list the user who have sudo or root access"
+	echo "pass argument arg1 | arg2 == < file getifo > to get file information help to perform file information work"
 	exit
 }
 
