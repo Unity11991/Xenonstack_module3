@@ -1,0 +1,58 @@
+.\" Manpage for Internctl.
+.\" Contact internship@xenonstack.com .
+.TH man 8 "18 Apr 2022" "v0.1.0" "internctl man page"
+.SH NAME
+internctl \- Internctl command is for xenonstack interns server
+.SH SYNOPSIS
+internctl [OPTIONS] ... [FILES] ....
+.SH OPTIONS
+the internctl options for info of files.
+.TP
+.B	--size, -s to print size
+.TP
+.B	--permission, -p print the file permission
+.TP
+.B	--owner, o print the file owner
+.TP
+.B	--last-modified, m print the last modified date
+.TP
+.SH DESCRIPTION
+.TP
+internctl is a server for Xenonstack interns. On Debian, Administrators should usually use internctl.debian(8) instead. internctl List information about the FILES. Create Users and show information of FILES
+Mandatory arduments to internctl otions ar mendatory for short option too
+.TP
+.B	--version
+version of the server.
+.TP	
+.B	--help
+gives help of the commands.
+.TP
+.B	cpu
+show cpu information.
+.TP
+.B	cpu [OPTIONS]
+.B		[OPTION] = getinfo
+show the cpu informtion of the server.
+.TP
+.B	memory -argument
+show the memory.
+.TP
+.B	memory argument <getinfo>
+show the memory informations of the server.
+.TP
+.B	user create [username]
+creates new user and home directory in the server.
+.B	user list
+list the all user presents on the server.
+.TP
+.N	user list --sudo-only
+list the only users who have sudo or root access on the server
+.TP
+
+.RE	
+.PP	
+
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Sawan Kumar Chouhan (sawanchouhan11991@gmail.com)
